@@ -25,3 +25,5 @@ days = ["mon",'tue','wed','thu','fri','sat']
 print("Today's day number is: ",wd)
 
 print("Which is a: " + days[wd])
+
+
