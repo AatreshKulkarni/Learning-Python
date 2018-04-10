@@ -13,7 +13,7 @@ def solQuadEq(num1, num2, num3):
 	print("Second solution is: ",sol2)
 	
 	
-# Input 3 constants of quadratic equation
+# Input 3 costants of quadratic equation
 num1 = int(input("Enter num1: "))
 num2 = int(input("Enter num2: "))
 num3 = int(input("Enter num3: "))
