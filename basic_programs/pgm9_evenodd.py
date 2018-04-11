@@ -12,6 +12,6 @@ def checkEvenOrOdd(num):
 	
 	
 # Input a number
-num = int(input("Enter a number to check even or odd: "))
+num = int(input("Enter a positive number to check even or odd: "))
 # Function call
 checkEvenOrOdd(num)
