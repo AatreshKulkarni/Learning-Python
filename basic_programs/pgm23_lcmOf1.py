@@ -1,4 +1,4 @@
-# To find lcm of 2 numbers
+# To find lcm of 2 numbers 
 
 # Defing a function that calculates the lcm of 2 numbers
 def lcmOf(num1,num2):
