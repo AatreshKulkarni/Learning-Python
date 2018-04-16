@@ -44,7 +44,6 @@ for i in range(row_size):
 	for j in range(col_size):
 		matrix1[i][j] = int(input())
 print(matrix1)
-
 # Input numbers of matrix2
 print("Enter numbers of matrix2:")
 for i in range(row_size):
