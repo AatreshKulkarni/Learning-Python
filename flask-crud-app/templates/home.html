@@ -1,0 +1,35 @@
+
+<html>
+
+<body>
+	<h1>Add Employee</h1>
+	<form method="POST" action="/">
+		<input type="text" name="emp_name">
+		<input type="submit" value="Add">
+	</form>
+
+	<h1>Employees List</h1>
+	<table>
+	{% for employee in employees %}
+		<tr>
+			<td>
+				{{employee.emp_name}}
+			</td>
+			<td>	
+				<form method="POST" action="./update" style="display: inline">
+					<input type="hidden" value="{{employee.emp_name}}" name="oldemp_name">
+					<input type="text" value="{{employee.emp_name}}" name="newemp_name">
+					<input type="submit" value="Update">
+				</form>
+			</td>
+			<td>
+				<form method="POST" action="./delete" style="display: inline">
+					<input type="hidden" value="{{employee.emp_name}}" name="emp_name">
+					<input type="submit" value="Delete">
+				</form>
+			</td>
+		</tr>		
+	{% endfor %}
+</table>
+</body>
+</html>
