@@ -7,6 +7,7 @@ from flask import Flask
 from flask import redirect
 from flask import render_template
 from flask import request
+from flask import url_for
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -32,8 +33,19 @@ class Employees(db.Model):
 	def __repr__(self):
 		return "<Emp_name: {}>".format(self.emp_name)
 
+
+@app.route('/', methods=['GET','POST'])	# render a template
+def login():
+	error = None
+	if request.method == 'POST':
+		if request.form['username'] == 'admin' and request.form['password'] == 'admin':
+			return redirect(url_for('home'))
+		else:
+			error = 'Invalid credentials. Please try again.'
+	return render_template('login.html',error = error)
+
 # Home page
-@app.route("/",methods=['GET','POST'])
+@app.route("/create", methods=['GET','POST'])
 # Defining home function
 def home():
 	employees = None
@@ -51,7 +63,7 @@ def home():
 	# Retrieving all employers name from database
 	employees = Employees.query.all()	
 	# Rendering html file from templates folder
-	return render_template('home.html', employees = employees)
+	return render_template('home.html',  employees = employees)
 
 # Udation page
 @app.route("/update",methods = ['POST'])
@@ -71,7 +83,7 @@ def update():
 	except Exception as e:
 		print("Couldn't update employee name")
 		print(e)
-	return redirect("/")
+	return redirect("/create")
 
 # Deletion page
 @app.route("/delete",methods = ['POST'])
@@ -85,7 +97,7 @@ def delete():
 	db.session.delete(employee)
 	# Commiting the changes
 	db.session.commit()
-	return redirect("/")
+	return redirect("/create")
 
 # Checking whether this program directly running
 if __name__ == "__main__":
